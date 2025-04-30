@@ -1,9 +1,7 @@
-#define LV_CONF_INCLUDE_SIMPLE
-#define LV_USE_LINUX_FBDEV 1
 #include <unistd.h>
 #include <lvgl/lv_conf.h>
 #include <lvgl/lvgl.h>
-#include <lvgl/examples/lv_examples.h>
+#include "ui/ui.h"
 
 int main(int args, char **argv)
 {
@@ -15,11 +13,12 @@ int main(int args, char **argv)
     lv_indev_t *indev = lv_libinput_create(LV_INDEV_TYPE_POINTER, path);
     lv_indev_set_display(indev, display);
     
-    lv_example_get_started_4();
+    ui_init();
     while (1)
     {
         lv_task_handler();
-        usleep(10);
+        ui_tick();
+        usleep(10000);
     }
     return 0;
 }
