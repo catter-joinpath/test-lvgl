@@ -1,5 +1,5 @@
 CFLAGS = -ggdb3
-LDFLAGS = -llvgl -llvgl_examples -lm -pthread
+LDFLAGS = -llvgl -llvgl_examples -linput -lm -pthread
 
 SRC = $(shell find -type f -name *.c)
 OBJ = $(patsubst %.c,%.o,$(SRC))
